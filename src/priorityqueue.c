@@ -29,3 +29,24 @@ int kickqueue(process q[], process dest[], int *sizeq){
 	compressarray(q, 0, sizeq);
 	return 1;
 }
+
+int sortqueue(process q[], int *size){
+	int i;
+	int j;
+
+	for(i=1; i<*size; i++){
+		for(j=i-1; j>=0; j--){
+			if(q[j].curPrior>q[j+1].curPrior){
+				swap(q, j, j+1);
+			}
+		}
+	}
+	return 1;
+}
+
+int swap(process q[], int j, int i){
+	process temp = q[j];
+	q[j] = q[i];
+	q[i] = temp;
+	return 1;
+}
