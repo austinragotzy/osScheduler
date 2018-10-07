@@ -14,3 +14,12 @@ int kickio(process io[], process dest[], int *sizeio, int *sizedest){
 	}
 	return 1;
 }
+
+int tickio(process io[], int *size){
+	int i;
+	for(i=0; i<*size; i++){
+		io[i].curIo++;
+		io[i].ioTotal++;
+	}
+	return 1;
+}

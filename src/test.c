@@ -17,6 +17,7 @@ int main(int argc, char *argv[]){
 	process a2[6];
 	int s2 = 0;
 	kickio(a1, a2, &s1, &s2);
+	tickio(a1, &s1);
 	printf("you did it\n");
 	return 1;
 }
