@@ -7,7 +7,7 @@ int addprocess(process p, process q[], int *size){
 	return 1;
 }
 
-int tickqueue(process q[], int *size){
+int tickqueue(process q[], int *size, os sys){
 	int i;
 	//go through and increment all the process in the queue
 	for(i=0; i<*size; i++){
@@ -17,6 +17,15 @@ int tickqueue(process q[], int *size){
 		if(q[i].wait>q[i].waitMax){
 			q[i].waitMax = q[i].wait;
 		}
+		if((0 == q[i].wait%sys.wait)&&(0 != q[i].wait)){
+			q[i].curPrior++;
+		}
 	}
+	return 1;
+}
+
+int kickqueue(process q[], process dest[], int *sizeq){
+	dest[0] = q[0];
+	compressarray(q, 0, sizeq);
 	return 1;
 }
