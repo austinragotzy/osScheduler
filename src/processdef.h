@@ -1,5 +1,5 @@
 #ifndef PROCESS
-#define  PROCESS
+#define PROCESS
 
 typedef unsigned short ui;
 struct process_struct {

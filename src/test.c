@@ -18,6 +18,7 @@ int main(int argc, char *argv[]){
 	int s2 = 0;
 	kickio(a1, a2, &s1, &s2);
 	tickio(a1, &s1);
+	tickqueue(a2, &s2);
 	printf("you did it\n");
 	return 1;
 }
