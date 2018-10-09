@@ -13,7 +13,7 @@ int tickcpu(process cpu[], os sys){
 int kickcpu(process cpu[], process dest[], int *sizedest){
 	process dummy;
 	dummy.priority = 16;
-
+	//move process out of cpu
 	cpu[0].curCpu = 0;
 	dest[*sizedest] = cpu[0];
 	cpu[0] = dummy;

@@ -71,6 +71,7 @@ int kickprocesses(os sys, process cpu[], process q[], process io[], process done
 int checkdone(process cpu[], process io[], process done[], int *sizeio, int *sizedone){
 	int ret = 0;
 	int i;
+	//if process in cpu is totally finished
 	if(cpu[0].runTime<=cpu[0].ioTotal+cpu[0].cpuTotal){
 		if(cpu[0].priority<16){
 			done[*sizedone] = cpu[0];
@@ -79,11 +80,11 @@ int checkdone(process cpu[], process io[], process done[], int *sizeio, int *siz
 		cpu[0].priority = 16;
 		ret = 1;
 	}
+	//if there are any processes in io that are totally finished
 	for(i=0; i<*sizeio; i++){
 		if(io[i].runTime<=io[i].ioTotal+io[i].cpuTotal){
 			done[*sizedone] = io[i];
 			compressarray(io, i, sizeio);
-			//(*sizeio)--;
 			(*sizedone)++;
 		}
 	}
