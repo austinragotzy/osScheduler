@@ -20,6 +20,7 @@ struct process_struct {
 	ui waitCount; // how many times in wait queue (for average)
 	ui waitMin; // smallest time in wait queue
 	ui waitMax; // longet time in wait queu
+	ui pid; //process id
 };
 typedef struct process_struct process;
 
@@ -30,4 +31,3 @@ typedef struct os_struct os;
 void printStats(process a[], os system);
 
 #endif
-

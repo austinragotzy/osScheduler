@@ -28,6 +28,7 @@ int readprocess(FILE *f, process q[], int *size){
 		p.waitCount = 0;
 		p.waitMin = 9999;
 		p.waitMax = 0;
+		p.pid = *size;
 		addprocess(p, q, size);
 	}
 
@@ -57,6 +58,7 @@ int kickprocesses(os sys, process cpu[], process q[], process io[], process done
 	//if the process gets taken out because of quantum
 	}else if(cpu[0].curCpu>=sys.quantum){
 		kickcpu(cpu, q, sizeq);
+		q[(*sizeq)-1].waitCount++;
 		if(*sizeq>0){
 			kickqueue(q, cpu, sizeq);
 		}
