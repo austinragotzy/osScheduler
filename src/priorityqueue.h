@@ -1,7 +1,7 @@
 
 #ifndef PRIOITYQUEUE
 #define PRIOITYQUEUE
-#include "first.h"
+
 int addprocess(process p, process q[], int *size);
 int tickqueue(process q[], int *size, os sys);
 //int adjustpriority(process q);

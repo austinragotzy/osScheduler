@@ -10,6 +10,7 @@ int kickio(process io[], process dest[], int *sizeio, int *sizedest){
 			addprocess(io[i], dest, sizedest);
 			compressarray(io, i, sizeio);
 			i--;
+			//(*sizeio)--;
 		}
 	}
 	return 1;

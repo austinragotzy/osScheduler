@@ -3,6 +3,7 @@
 int addprocess(process p, process q[], int *size){
 	//add to end of the queue to be sorted
 	q[*size] = p;
+	q[*size].waitCount++;
 	(*size)++;
 	return 1;
 }
@@ -18,15 +19,21 @@ int tickqueue(process q[], int *size, os sys){
 			q[i].waitMax = q[i].wait;
 		}
 		if((0 == q[i].wait%sys.wait)&&(0 != q[i].wait)){
-			q[i].curPrior++;
+			q[i].curPrior--;
 		}
 	}
 	return 1;
 }
 
 int kickqueue(process q[], process dest[], int *sizeq){
+	q[0].curPrior = q[0].priority;
+	if(q[0].wait < q[0].waitMin){
+		q[0].waitMin = q[0].wait;
+	}
+	q[0].wait = 0;
 	dest[0] = q[0];
 	compressarray(q, 0, sizeq);
+	//(*sizeq)--;
 	return 1;
 }
 

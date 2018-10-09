@@ -2,20 +2,18 @@ CC = gcc
 
 CFLAGS = -g -Wall -pedantic
 #CFLAGS = -O -Wall -pedantic
-main: iolist.o loopfunc.o priorityqueue.o processdef.h
+main: iolist.o loopfunc.o priorityqueue.o cpu.o printStats.o
 
-iolist.o loopfunc.o priorityqueue.o: all.h
+iolist.o loopfunc.o priorityqueue.o printStats.o: all.h
 
-all.h: first.h iolist.h loopfunc.h priorityqueue.h processdef.h
+all.h: first.h iolist.h loopfunc.h priorityqueue.h cpu.h a2.h
 	touch all.h
 
-test: iolist.o loopfunc.o priorityqueue.o processdef.h
-
 clean:
-	rm -f *.o core main test
+	rm -f *.o core main
 
 run: main
-	./main a2in.txt
+	./main
 
 debug:
 	gdb ./main
