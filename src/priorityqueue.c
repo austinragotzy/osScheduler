@@ -1,5 +1,9 @@
 #include "all.h"
-
+/*
+name: Austin Ragotzy
+class: opperating systems
+assignment: Scheduling Assignment
+*/
 int addprocess(process p, process q[], int *size){
 	//add to end of the queue to be sorted
 	q[*size] = p;

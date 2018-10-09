@@ -1,6 +1,11 @@
 #include "all.h"
-
+/*
+name: Austin Ragotzy
+class: opperating systems
+assignment: Scheduling Assignment
+*/
 int main(int argc, char *argv[]){
+	
 	process q[100];
 	int sizeq = 0;
 	process io[100];
@@ -12,10 +17,12 @@ int main(int argc, char *argv[]){
 	sys.quantum = 50;
 	sys.wait = 50;
 	int flag = 0;
+
 	FILE *fp;
 	if(!(fp = fopen("../input/a2in.txt", "r"))){
 		perror("file open");
 	}
+
 	readprocess(fp, q, &sizeq);
 	kickqueue(q, cpu, &sizeq);
 	long int i = 0;
@@ -30,7 +37,7 @@ int main(int argc, char *argv[]){
 		//printf("q:%d, io:%d, done:%d, iteration: %li\n", sizeq, sizeio, sizedone, i);
 		i++;
 	}
-	printf("done\n");
+
 	printStats(done, sys);
 	fclose(fp);
 	return 1;

@@ -1,6 +1,9 @@
-
 #include "all.h"
-
+/*
+name: Austin Ragotzy
+class: opperating systems
+assignment: Scheduling Assignment
+*/
 int kickio(process io[], process dest[], int *sizeio, int *sizedest){
 	int i;
 	//go through the array and find if any have finished io

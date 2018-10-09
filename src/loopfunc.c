@@ -1,5 +1,9 @@
 #include "all.h"
-
+/*
+name: Austin Ragotzy
+class: opperating systems
+assignment: Scheduling Assignment
+*/
 int compressarray(process a[], int index, int *size){
 	//move array elements up so there is no holes
 	while(index+1<*size){
