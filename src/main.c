@@ -5,7 +5,7 @@ class: opperating systems
 assignment: Scheduling Assignment
 */
 int main(int argc, char *argv[]){
-	
+
 	process q[100];
 	int sizeq = 0;
 	process io[100];

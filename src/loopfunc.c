@@ -42,22 +42,26 @@ int tickclock(os sys, process cpu[], process q[], process io[], int *sizeq, int 
 }
 
 int kickprocesses(os sys, process cpu[], process q[], process io[], process done[], int *sizeq, int *sizeio, int *sizedone){
+	// if the process gets taken out of the cpu because its done
 	int flag = checkdone(cpu, io, done, sizeio, sizedone);
 	if(flag){
 		if(*sizeq>0){
 			kickqueue(q, cpu, sizeq);
 		}
+	//if the process gets taken out of cpu becuse it needs io
 	}else if(cpu[0].curCpu>=cpu[0].cpu){
 		kickcpu(cpu, io, sizeio);
 		if(*sizeq>0){
 			kickqueue(q, cpu, sizeq);
 		}
+	//if the process gets taken out because of quantum
 	}else if(cpu[0].curCpu>=sys.quantum){
 		kickcpu(cpu, q, sizeq);
 		if(*sizeq>0){
 			kickqueue(q, cpu, sizeq);
 		}
 	}
+
 	kickio(io, q, sizeio, sizeq);
 	return 1;
 }
@@ -87,7 +91,7 @@ int checkdone(process cpu[], process io[], process done[], int *sizeio, int *siz
 int aredone(process cpu[], int *sizeq, int *sizeio){
 	int ret = 0;
 	if(0>=*sizeq){
-		if(0>=*sizeio&&16<=cpu[0].priority){
+		if(0>=*sizeio&&(16<=cpu[0].priority)){
 			ret = 1;
 		}
 	}

@@ -22,8 +22,11 @@ int tickqueue(process q[], int *size, os sys){
 		if(q[i].wait>q[i].waitMax){
 			q[i].waitMax = q[i].wait;
 		}
+		//if it waits max wait increment curpriority
 		if((0 == q[i].wait%sys.wait)&&(0 != q[i].wait)){
-			q[i].curPrior--;
+			if(q[i].curPrior<15){
+				q[i].curPrior++;
+			}
 		}
 	}
 	return 1;
@@ -47,7 +50,7 @@ int sortqueue(process q[], int *size){
 
 	for(i=1; i<*size; i++){
 		for(j=i-1; j>=0; j--){
-			if(q[j].curPrior>q[j+1].curPrior){
+			if(q[j].curPrior<q[j+1].curPrior){
 				swap(q, j, j+1);
 			}
 		}
